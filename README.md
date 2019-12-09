@@ -1,36 +1,36 @@
-# node-js-sqlite
-Simple NodeJS Rest API with CRUD routes.
+# API em node-js-sqlite
+Simples API em NodeJS Rest API com CRUD e conexão com SQlite.
 Using SQLite database
 
-## How to Install
+## Como instalar
 ```sh
-$ git clone https://github.com/lcarlesso/node-js-sqlite.git
-$ cd node-js-sqlite
+$ git clone https://github.com/macielsousadasilva/simple_api_on_node_js.git
+$ cd simple_api_on_node_js
 $ npm install 
 $ npm run dev
 ```
 
-It will be running on port 4300
+O servidor estara rodando por padrão na porta 8050
 
 ------------
 
-## How to use
+## Como usar
 
 ### POST
-* **Add new product:**
+* **Adicionar produtos:**
 ```
-http://localhost:4300/api/product
+http://localhost:8050/api/product
 ```
-Sending a JSON body:
+Corpo do JSON a ser enviado:
 ```javascript
 {
-	"name": "ExampleProductName",
-	"description": "Example product description",
+	"name": "Nome do produto",
+	"description": "Descrição do produto",
 	"price": 2.00,
-	"currency": "EUR" 
+	"currency": "BRL" 
 }
 ```
-or an array of products:
+ou um array de produtos:
 ```javascript
 [
 	{...},{...}
@@ -40,21 +40,21 @@ or an array of products:
 ---------------------------------------------
 
 ### PUT
-* **Update a product:**
+* **Atualiza os produtos:**
 ```
-http://localhost:4300/api/product
+http://localhost:8050/api/product
 ```
-Sending a JSON body: **ID is the only MANDATORY**
+Corpo do JSON a ser enviado: **O ID é o único OBRIGATÓRIO**
 ```javascript
 {
 	"id": "1",
-	"name": "ExampleProductName",
-	"description": "Example product description",
+	"name": "Nome do produto",
+	"description": "Descrição do produto",
 	"price": 2.00,
-	"currency": "EUR" 
+	"currency": "BRL" 
 }
 ```
-or an array of products:
+ou um array de produtos:
 ```javascript
 [
 	{...},{...}
@@ -64,21 +64,21 @@ or an array of products:
 ---------------------------------------------
 
 ### DELETE
-* **Delete a product:**
+* **Deletando um produto:**
 ```
-http://localhost:4300/api/product
+http://localhost:8050/api/product
 ```
-Sending a JSON body: **ID is the only MANDATORY**
+Corpo do JSON a ser enviado: **O ID é o único OBRIGATÓRIO**
 ```javascript
 {
 	"id": "1",
-	"name": "ExampleProductName",
-	"description": "Example product description",
+	"name": "Nome do Produto",
+	"description": "Descrição do produto",
 	"price": 2.00,
-	"currency": "EUR" 
+	"currency": "BRL" 
 }
 ```
-or an array of products:
+ou um array de produtos:
 ```javascript
 [
 	{...},{...}
@@ -88,58 +88,55 @@ or an array of products:
 ---------------------------------------------
 
 ### GET
-* **Load products by ID:**
+* **Buscando produtos por ID:**
 ```
-http://localhost:4300/api/product/id/$id
+http://localhost:8050/api/product/id/$id
 ```
-example: http://localhost:4300/api/product/id/15
+Exemplo: http://localhost:8050/api/product/id/15
 _____
 
-* **Load all products:**
+* **Visualizar todos os produtos:**
 ```
-http://localhost:4300/api/product/
+http://localhost:8050/api/product/
 ```
 ______
 
-* **Load products by any attribute and value:** 
+* **Carregar produtos por qualquer atributo e valor:** 
 ```
-http://localhost:4300/api/product/$attribute/$name
+http://localhost:8050/api/product/$attribute/$name
 ```
 example: 
-- http://localhost:4300/api/product/price/24
-- http://localhost:4300/api/product/name/Suntone
+- http://localhost:8050/api/product/price/24
+- http://localhost:8050/api/product/name/Suntone
 $attribute = ['name', 'price', 'currency', 'description']
-(this is not checked values, wrong parameters will return a DB error.)
+(Se esses valores não forem verificados, se ouver parâmetros errados retornarão um erro no banco de dados.)
 _____
 
-* **Load all products sorting by attribute** 
+* **Carregar todos os produtos classificados por atributo** 
 ```
-http://localhost:4300/api/product/sort/$attribute
+http://localhost:8050/api/product/sort/$attribute
 ```
-example: 
-- http://localhost:4300/api/product/sort/price
-- http://localhost:4300/api/product/sort/name
+Exemplo: 
+- http://localhost:8050/api/product/sort/price
+- http://localhost:8050/api/product/sort/name
 
 $attribute = ['name', 'price', 'currency', 'description']
-(this is not checked values, wrong parameters will return a DB error)
+(Se os valores não forem verificados, ou ouver parâmetros errados retornarão um erro de banco de dados)
 ____
 
-* **Load products sorting ASC or DESC by any attribute:**
+* **Carregar produtos classificando ASC ou DESC por qualquer atributo:**
 ```
-http://localhost:4300/api/product/sort/$direction/$attribute
+http://localhost:8050/api/product/sort/$direction/$attribute
 ```
-example: 
-- http://localhost:4300/api/product/sort/asc/price
-- http://localhost:4300/api/product/sort/desc/price
+Exemplo: 
+- http://localhost:8050/api/product/sort/asc/price
+- http://localhost:8050/api/product/sort/desc/price
 
 $attribute = ['name', 'price', 'currency', 'description']*
 $direction [ASC or DESC]C]*
-(the direction is checked and when wrong will return a 401 business error)
+(a direção(ASC-DESC) é verificada e, quando errado, retornará um erro 401)
 _____
 
 
 ## SQLite database
-The database is already populated with 30 random values from https://www.mockaroo.com/
-
-### Node version
-The Node version used was 6.9.3
+O banco de dados já está preenchido com 30 valores aleatórios de https://www.mockaroo.com/
