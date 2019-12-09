@@ -1,6 +1,6 @@
 # API em node-js-sqlite
 Simples API em NodeJS Rest API com CRUD e conexão com SQlite.
-Using SQLite database
+Usando SQLite database
 
 ## Como instalar
 ```sh
